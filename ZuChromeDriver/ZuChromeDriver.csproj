@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Zu</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>0.8.1</Version>
+		<Version>0.8.2</Version>
 		<Authors>tocsharp</Authors>
 		<Company>ZuChromeDriver</Company>
 		<Description>.NET Chrome automation via CDP over WebSocket — no chromedriver binary. Selenium-like WebDriver API plus full Chrome DevTools access.</Description>
