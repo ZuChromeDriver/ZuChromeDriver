@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ZuChromeDriver\ZuChromeDriver.csproj" />
+    <ProjectReference Include="..\..\ChromeDevToolsClient\ChromeDevToolsClient.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,14 +4,48 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Zu</RootNamespace>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>0.8.1</Version>
+		<Authors>tocsharp</Authors>
+		<Company>ZuChromeDriver</Company>
+		<Description>.NET Chrome automation via CDP over WebSocket — no chromedriver binary. Selenium-like WebDriver API plus full Chrome DevTools access.</Description>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/ZuChromeDriver/ZuChromeDriver</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/ZuChromeDriver/ZuChromeDriver</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>chrome webdriver cdp devtools selenium automation browser testing</PackageTags>
+		<PackageReleaseNotes>- Async WebDriver API (ZuWebDriver, By, WebElement)&#xA;- Direct CDP over WebSocket (ChromeDevToolsClient bundled)&#xA;- Headless Chrome, screenshots, frame switching&#xA;- Requires .NET 10 and Google Chrome</PackageReleaseNotes>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ChromeDevToolsClient\ChromeDevToolsClient.csproj" />
+		<ProjectReference Include="..\ChromeDevToolsClient\ChromeDevToolsClient.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
 	</ItemGroup>
+
+	<!-- Pack ChromeDevToolsClient.dll into this NuGet package instead of a separate Zu.ChromeDevToolsClient dependency. -->
+	<PropertyGroup>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
 
 </Project>
