@@ -59,11 +59,8 @@ jobs:
             echo "NUGET_API_KEY secret is not configured; skipping nuget.org."
             exit 0
           fi
+          # Pushing .nupkg also uploads the matching .snupkg from the same folder.
           dotnet nuget push artifacts/*.nupkg \
-            --source https://api.nuget.org/v3/index.json \
-            --api-key "$NUGET_API_KEY" \
-            --skip-duplicate
-          dotnet nuget push artifacts/*.snupkg \
             --source https://api.nuget.org/v3/index.json \
             --api-key "$NUGET_API_KEY" \
             --skip-duplicate
@@ -71,10 +68,6 @@ jobs:
       - name: Push to GitHub Packages
         run: |
           dotnet nuget push artifacts/*.nupkg \
-            --source https://nuget.pkg.github.com/ZuChromeDriver/index.json \
-            --api-key "${{ secrets.GITHUB_TOKEN }}" \
-            --skip-duplicate
-          dotnet nuget push artifacts/*.snupkg \
             --source https://nuget.pkg.github.com/ZuChromeDriver/index.json \
             --api-key "${{ secrets.GITHUB_TOKEN }}" \
             --skip-duplicate
