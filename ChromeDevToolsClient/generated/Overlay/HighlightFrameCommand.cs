@@ -1,0 +1,55 @@
+namespace Zu.ChromeDevTools.Overlay
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Highlights owner element of the frame with given id.
+    /// Deprecated: Doesn't work reliably and cannot be fixed due to process
+    /// separation (the owner node might be in a different process). Determine
+    /// the owner node in the client and use highlightNode.
+    /// </summary>
+    public sealed class HighlightFrameCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Overlay.highlightFrame";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Identifier of the frame to highlight.
+        /// </summary>
+        [JsonPropertyName("frameId")]
+        public string FrameId
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// The content box highlight fill color (default: transparent).
+        /// </summary>
+        [JsonPropertyName("contentColor")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DOM.RGBA ContentColor
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// The content box highlight outline color (default: transparent).
+        /// </summary>
+        [JsonPropertyName("contentOutlineColor")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DOM.RGBA ContentOutlineColor
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class HighlightFrameCommandResponse : ICommandResponse<HighlightFrameCommand>
+    {
+    }
+}

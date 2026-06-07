@@ -1,0 +1,49 @@
+namespace Zu.ChromeDevTools.Security
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Security state information about the page.
+    /// </summary>
+    public sealed class VisibleSecurityState
+    {
+        /// <summary>
+        /// The security level of the page.
+        ///</summary>
+        [JsonPropertyName("securityState")]
+        public SecurityState SecurityState
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Security state details about the page certificate.
+        ///</summary>
+        [JsonPropertyName("certificateSecurityState")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public CertificateSecurityState CertificateSecurityState
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.
+        ///</summary>
+        [JsonPropertyName("safetyTipInfo")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public SafetyTipInfo SafetyTipInfo
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Array of security state issues ids.
+        ///</summary>
+        [JsonPropertyName("securityStateIssueIds")]
+        public string[] SecurityStateIssueIds
+        {
+            get;
+            set;
+        }
+    }
+}

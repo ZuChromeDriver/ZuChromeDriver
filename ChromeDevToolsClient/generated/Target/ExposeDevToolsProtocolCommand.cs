@@ -1,0 +1,59 @@
+namespace Zu.ChromeDevTools.Target
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Inject object to the target's main frame that provides a communication
+    /// channel with browser target.
+    /// 
+    /// Injected object will be available as `window[bindingName]`.
+    /// 
+    /// The object has the following API:
+    /// - `binding.send(json)` - a method to send messages over the remote debugging protocol
+    /// - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+    /// </summary>
+    public sealed class ExposeDevToolsProtocolCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Target.exposeDevToolsProtocol";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Gets or sets the targetId
+        /// </summary>
+        [JsonPropertyName("targetId")]
+        public string TargetId
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Binding name, 'cdp' if not specified.
+        /// </summary>
+        [JsonPropertyName("bindingName")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string BindingName
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// If true, inherits the current root session's permissions (default: false).
+        /// </summary>
+        [JsonPropertyName("inheritPermissions")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool? InheritPermissions
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class ExposeDevToolsProtocolCommandResponse : ICommandResponse<ExposeDevToolsProtocolCommand>
+    {
+    }
+}

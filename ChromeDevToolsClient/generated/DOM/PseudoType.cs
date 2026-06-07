@@ -1,0 +1,94 @@
+namespace Zu.ChromeDevTools.DOM
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Pseudo element type.
+    /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum PseudoType
+    {
+        [JsonStringEnumMemberName("first-line")]
+        FirstLine,
+        [JsonStringEnumMemberName("first-letter")]
+        FirstLetter,
+        [JsonStringEnumMemberName("checkmark")]
+        Checkmark,
+        [JsonStringEnumMemberName("before")]
+        Before,
+        [JsonStringEnumMemberName("after")]
+        After,
+        [JsonStringEnumMemberName("expand-icon")]
+        ExpandIcon,
+        [JsonStringEnumMemberName("picker-icon")]
+        PickerIcon,
+        [JsonStringEnumMemberName("interest-button")]
+        InterestButton,
+        [JsonStringEnumMemberName("marker")]
+        Marker,
+        [JsonStringEnumMemberName("backdrop")]
+        Backdrop,
+        [JsonStringEnumMemberName("column")]
+        Column,
+        [JsonStringEnumMemberName("selection")]
+        Selection,
+        [JsonStringEnumMemberName("search-text")]
+        SearchText,
+        [JsonStringEnumMemberName("target-text")]
+        TargetText,
+        [JsonStringEnumMemberName("spelling-error")]
+        SpellingError,
+        [JsonStringEnumMemberName("grammar-error")]
+        GrammarError,
+        [JsonStringEnumMemberName("highlight")]
+        Highlight,
+        [JsonStringEnumMemberName("first-line-inherited")]
+        FirstLineInherited,
+        [JsonStringEnumMemberName("scroll-marker")]
+        ScrollMarker,
+        [JsonStringEnumMemberName("scroll-marker-group")]
+        ScrollMarkerGroup,
+        [JsonStringEnumMemberName("scroll-button")]
+        ScrollButton,
+        [JsonStringEnumMemberName("scrollbar")]
+        Scrollbar,
+        [JsonStringEnumMemberName("scrollbar-thumb")]
+        ScrollbarThumb,
+        [JsonStringEnumMemberName("scrollbar-button")]
+        ScrollbarButton,
+        [JsonStringEnumMemberName("scrollbar-track")]
+        ScrollbarTrack,
+        [JsonStringEnumMemberName("scrollbar-track-piece")]
+        ScrollbarTrackPiece,
+        [JsonStringEnumMemberName("scrollbar-corner")]
+        ScrollbarCorner,
+        [JsonStringEnumMemberName("resizer")]
+        Resizer,
+        [JsonStringEnumMemberName("input-list-button")]
+        InputListButton,
+        [JsonStringEnumMemberName("view-transition")]
+        ViewTransition,
+        [JsonStringEnumMemberName("view-transition-group")]
+        ViewTransitionGroup,
+        [JsonStringEnumMemberName("view-transition-image-pair")]
+        ViewTransitionImagePair,
+        [JsonStringEnumMemberName("view-transition-group-children")]
+        ViewTransitionGroupChildren,
+        [JsonStringEnumMemberName("view-transition-old")]
+        ViewTransitionOld,
+        [JsonStringEnumMemberName("view-transition-new")]
+        ViewTransitionNew,
+        [JsonStringEnumMemberName("placeholder")]
+        Placeholder,
+        [JsonStringEnumMemberName("file-selector-button")]
+        FileSelectorButton,
+        [JsonStringEnumMemberName("details-content")]
+        DetailsContent,
+        [JsonStringEnumMemberName("picker")]
+        Picker,
+        [JsonStringEnumMemberName("permission-icon")]
+        PermissionIcon,
+        [JsonStringEnumMemberName("overscroll-area-parent")]
+        OverscrollAreaParent,
+    }
+}

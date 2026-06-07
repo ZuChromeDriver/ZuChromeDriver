@@ -1,0 +1,54 @@
+namespace Zu.ChromeDevTools.Page
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
+    /// unavailable.
+    /// </summary>
+    public sealed class SetGeolocationOverrideCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Page.setGeolocationOverride";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Mock latitude
+        /// </summary>
+        [JsonPropertyName("latitude")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public double? Latitude
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Mock longitude
+        /// </summary>
+        [JsonPropertyName("longitude")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public double? Longitude
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Mock accuracy
+        /// </summary>
+        [JsonPropertyName("accuracy")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public double? Accuracy
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class SetGeolocationOverrideCommandResponse : ICommandResponse<SetGeolocationOverrideCommand>
+    {
+    }
+}

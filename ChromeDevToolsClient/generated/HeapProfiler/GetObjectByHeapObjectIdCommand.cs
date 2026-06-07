@@ -1,0 +1,51 @@
+namespace Zu.ChromeDevTools.HeapProfiler
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class GetObjectByHeapObjectIdCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "HeapProfiler.getObjectByHeapObjectId";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Gets or sets the objectId
+        /// </summary>
+        [JsonPropertyName("objectId")]
+        public string ObjectId
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Symbolic group name that can be used to release multiple objects.
+        /// </summary>
+        [JsonPropertyName("objectGroup")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string ObjectGroup
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class GetObjectByHeapObjectIdCommandResponse : ICommandResponse<GetObjectByHeapObjectIdCommand>
+    {
+        /// <summary>
+        /// Evaluation result.
+        ///</summary>
+        [JsonPropertyName("result")]
+        public Runtime.RemoteObject Result
+        {
+            get;
+            set;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+namespace Zu.ChromeDevTools.Debugger
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Returns source for the script with given id.
+    /// </summary>
+    public sealed class GetScriptSourceCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Debugger.getScriptSource";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Id of the script to get source for.
+        /// </summary>
+        [JsonPropertyName("scriptId")]
+        public string ScriptId
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class GetScriptSourceCommandResponse : ICommandResponse<GetScriptSourceCommand>
+    {
+        /// <summary>
+        /// Script source (empty in case of Wasm bytecode).
+        ///</summary>
+        [JsonPropertyName("scriptSource")]
+        public string ScriptSource
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Wasm bytecode. (Encoded as a base64 string when passed over JSON)
+        ///</summary>
+        [JsonPropertyName("bytecode")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Bytecode
+        {
+            get;
+            set;
+        }
+    }
+}

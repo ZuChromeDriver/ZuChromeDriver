@@ -1,0 +1,38 @@
+namespace Zu.ChromeDevTools.Runtime
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Notification is issued every time when binding is called.
+    /// </summary>
+    public sealed class BindingCalledEvent : IEvent
+    {
+        /// <summary>
+        /// Gets or sets the name
+        /// </summary>
+        [JsonPropertyName("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Gets or sets the payload
+        /// </summary>
+        [JsonPropertyName("payload")]
+        public string Payload
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Identifier of the context where the call was made.
+        /// </summary>
+        [JsonPropertyName("executionContextId")]
+        public long ExecutionContextId
+        {
+            get;
+            set;
+        }
+    }
+}

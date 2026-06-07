@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/Examples/">
+    <Project Path="Examples/DevToolsDirect/DevToolsDirect.csproj" />
+    <Project Path="Examples/HeadlessChrome/HeadlessChrome.csproj" />
+    <Project Path="Examples/QuickStart/QuickStart.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="ChromeDevToolsClient/ChromeDevToolsClient.csproj" />
+  <Project Path="ChromeDevToolsClientGenerator/ChromeDevToolsClientGenerator.csproj" />
+  <Project Path="HtmlForTests/HtmlForTests.csproj" />
+  <Project Path="ZuChromeDriver.Tests/ZuChromeDriver.Tests.csproj" />
+  <Project Path="ZuChromeDriver/ZuChromeDriver.csproj" />
+</Solution>

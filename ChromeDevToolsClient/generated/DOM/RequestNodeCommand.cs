@@ -1,0 +1,43 @@
+namespace Zu.ChromeDevTools.DOM
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Requests that the node is sent to the caller given the JavaScript node object reference. All
+    /// nodes that form the path from the node to the root are also sent to the client as a series of
+    /// `setChildNodes` notifications.
+    /// </summary>
+    public sealed class RequestNodeCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "DOM.requestNode";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// JavaScript object id to convert into node.
+        /// </summary>
+        [JsonPropertyName("objectId")]
+        public string ObjectId
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class RequestNodeCommandResponse : ICommandResponse<RequestNodeCommand>
+    {
+        /// <summary>
+        /// Node id for given object.
+        ///</summary>
+        [JsonPropertyName("nodeId")]
+        public long NodeId
+        {
+            get;
+            set;
+        }
+    }
+}

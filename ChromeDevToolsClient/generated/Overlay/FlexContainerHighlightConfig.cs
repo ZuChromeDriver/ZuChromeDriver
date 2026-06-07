@@ -1,0 +1,91 @@
+namespace Zu.ChromeDevTools.Overlay
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Configuration data for the highlighting of Flex container elements.
+    /// </summary>
+    public sealed class FlexContainerHighlightConfig
+    {
+        /// <summary>
+        /// The style of the container border
+        ///</summary>
+        [JsonPropertyName("containerBorder")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public LineStyle ContainerBorder
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// The style of the separator between lines
+        ///</summary>
+        [JsonPropertyName("lineSeparator")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public LineStyle LineSeparator
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// The style of the separator between items
+        ///</summary>
+        [JsonPropertyName("itemSeparator")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public LineStyle ItemSeparator
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Style of content-distribution space on the main axis (justify-content).
+        ///</summary>
+        [JsonPropertyName("mainDistributedSpace")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public BoxStyle MainDistributedSpace
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Style of content-distribution space on the cross axis (align-content).
+        ///</summary>
+        [JsonPropertyName("crossDistributedSpace")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public BoxStyle CrossDistributedSpace
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Style of empty space caused by row gaps (gap/row-gap).
+        ///</summary>
+        [JsonPropertyName("rowGapSpace")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public BoxStyle RowGapSpace
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Style of empty space caused by columns gaps (gap/column-gap).
+        ///</summary>
+        [JsonPropertyName("columnGapSpace")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public BoxStyle ColumnGapSpace
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Style of the self-alignment line (align-items).
+        ///</summary>
+        [JsonPropertyName("crossAlignment")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public LineStyle CrossAlignment
+        {
+            get;
+            set;
+        }
+    }
+}

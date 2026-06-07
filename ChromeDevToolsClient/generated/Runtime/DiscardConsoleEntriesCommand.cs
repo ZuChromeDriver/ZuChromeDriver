@@ -1,0 +1,23 @@
+namespace Zu.ChromeDevTools.Runtime
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Discards collected exceptions and console API calls.
+    /// </summary>
+    public sealed class DiscardConsoleEntriesCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Runtime.discardConsoleEntries";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+    }
+
+    public sealed class DiscardConsoleEntriesCommandResponse : ICommandResponse<DiscardConsoleEntriesCommand>
+    {
+    }
+}

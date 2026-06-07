@@ -1,0 +1,118 @@
+namespace Zu.ChromeDevTools.Tracing
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Start trace events collection.
+    /// </summary>
+    public sealed class StartCommand : ICommand
+    {
+        private const string ChromeRemoteInterface_CommandName = "Tracing.start";
+        
+        [JsonIgnore]
+        public string CommandName
+        {
+            get { return ChromeRemoteInterface_CommandName; }
+        }
+
+        /// <summary>
+        /// Category/tag filter
+        /// </summary>
+        [JsonPropertyName("categories")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Categories
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Tracing options
+        /// </summary>
+        [JsonPropertyName("options")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Options
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// If set, the agent will issue bufferUsage events at this interval, specified in milliseconds
+        /// </summary>
+        [JsonPropertyName("bufferUsageReportingInterval")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public double? BufferUsageReportingInterval
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Whether to report trace events as series of dataCollected events or to save trace to a
+        /// stream (defaults to `ReportEvents`).
+        /// </summary>
+        [JsonPropertyName("transferMode")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string TransferMode
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Trace data format to use. This only applies when using `ReturnAsStream`
+        /// transfer mode (defaults to `json`).
+        /// </summary>
+        [JsonPropertyName("streamFormat")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public StreamFormat? StreamFormat
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Compression format to use. This only applies when using `ReturnAsStream`
+        /// transfer mode (defaults to `none`)
+        /// </summary>
+        [JsonPropertyName("streamCompression")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public StreamCompression? StreamCompression
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Gets or sets the traceConfig
+        /// </summary>
+        [JsonPropertyName("traceConfig")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public TraceConfig TraceConfig
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
+        /// When specified, the parameters `categories`, `options`, `traceConfig`
+        /// are ignored. (Encoded as a base64 string when passed over JSON)
+        /// </summary>
+        [JsonPropertyName("perfettoConfig")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string PerfettoConfig
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Backend type (defaults to `auto`)
+        /// </summary>
+        [JsonPropertyName("tracingBackend")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public TracingBackend? TracingBackend
+        {
+            get;
+            set;
+        }
+    }
+
+    public sealed class StartCommandResponse : ICommandResponse<StartCommand>
+    {
+    }
+}

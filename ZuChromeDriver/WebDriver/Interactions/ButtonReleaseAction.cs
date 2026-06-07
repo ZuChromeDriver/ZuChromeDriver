@@ -1,0 +1,38 @@
+// Copyright (c) Oleg Zudov. All Rights Reserved. Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+// This file is based on or incorporates material from the project Selenium, licensed under the Apache License, Version 2.0. More info in THIRD-PARTY-NOTICES file.
+using Zu.WebDriver.Interactions.Internal;
+using Zu.WebDriver.AsyncInteractions;
+
+namespace Zu.WebDriver.Interactions
+{
+    /// <summary>
+    ///     Defines an action for releasing the currently held mouse button.
+    /// </summary>
+    /// <remarks>
+    ///     This action can be called for an element different than the one
+    ///     ClickAndHoldAction was called for. However, if this action is
+    ///     performed out of sequence (without holding down the mouse button,
+    ///     for example) the results will be different.
+    /// </remarks>
+    public class ButtonReleaseAction : MouseAction, IAction
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref = "ButtonReleaseAction"/> class.
+        /// </summary>
+        /// <param name = "mouse">The <see cref = "IMouse"/> with which the action will be performed.</param>
+        /// <param name = "actionTarget">An <see cref = "ILocatable"/> describing an element at which to perform the action.</param>
+        public ButtonReleaseAction(IMouse mouse, ILocatable actionTarget): base (mouse, actionTarget)
+        {
+        }
+
+        /// <summary>
+        ///     Performs this action.
+        /// </summary>
+        public async Task Perform(CancellationToken cancellationToken = new CancellationToken())
+        {
+            // between browsers.
+            await MoveToLocation(cancellationToken).ConfigureAwait(false);
+            await Mouse.MouseUp(ActionLocation, cancellationToken).ConfigureAwait(false);
+        }
+    }
+}

@@ -1,0 +1,70 @@
+namespace Zu.ChromeDevTools.Audits
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum MixedContentResourceType
+    {
+        [JsonStringEnumMemberName("AttributionSrc")]
+        AttributionSrc,
+        [JsonStringEnumMemberName("Audio")]
+        Audio,
+        [JsonStringEnumMemberName("Beacon")]
+        Beacon,
+        [JsonStringEnumMemberName("CSPReport")]
+        CSPReport,
+        [JsonStringEnumMemberName("Download")]
+        Download,
+        [JsonStringEnumMemberName("EventSource")]
+        EventSource,
+        [JsonStringEnumMemberName("Favicon")]
+        Favicon,
+        [JsonStringEnumMemberName("Font")]
+        Font,
+        [JsonStringEnumMemberName("Form")]
+        Form,
+        [JsonStringEnumMemberName("Frame")]
+        Frame,
+        [JsonStringEnumMemberName("Image")]
+        Image,
+        [JsonStringEnumMemberName("Import")]
+        Import,
+        [JsonStringEnumMemberName("JSON")]
+        JSON,
+        [JsonStringEnumMemberName("Manifest")]
+        Manifest,
+        [JsonStringEnumMemberName("Ping")]
+        Ping,
+        [JsonStringEnumMemberName("PluginData")]
+        PluginData,
+        [JsonStringEnumMemberName("PluginResource")]
+        PluginResource,
+        [JsonStringEnumMemberName("Prefetch")]
+        Prefetch,
+        [JsonStringEnumMemberName("Resource")]
+        Resource,
+        [JsonStringEnumMemberName("Script")]
+        Script,
+        [JsonStringEnumMemberName("ServiceWorker")]
+        ServiceWorker,
+        [JsonStringEnumMemberName("SharedWorker")]
+        SharedWorker,
+        [JsonStringEnumMemberName("SpeculationRules")]
+        SpeculationRules,
+        [JsonStringEnumMemberName("Stylesheet")]
+        Stylesheet,
+        [JsonStringEnumMemberName("Track")]
+        Track,
+        [JsonStringEnumMemberName("Video")]
+        Video,
+        [JsonStringEnumMemberName("Worker")]
+        Worker,
+        [JsonStringEnumMemberName("XMLHttpRequest")]
+        XMLHttpRequest,
+        [JsonStringEnumMemberName("XSLT")]
+        XSLT,
+    }
+}

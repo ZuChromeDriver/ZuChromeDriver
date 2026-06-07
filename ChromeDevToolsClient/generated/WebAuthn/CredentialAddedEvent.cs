@@ -1,0 +1,29 @@
+namespace Zu.ChromeDevTools.WebAuthn
+{
+    using System.Text.Json.Serialization;
+
+    /// <summary>
+    /// Triggered when a credential is added to an authenticator.
+    /// </summary>
+    public sealed class CredentialAddedEvent : IEvent
+    {
+        /// <summary>
+        /// Gets or sets the authenticatorId
+        /// </summary>
+        [JsonPropertyName("authenticatorId")]
+        public string AuthenticatorId
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// Gets or sets the credential
+        /// </summary>
+        [JsonPropertyName("credential")]
+        public Credential Credential
+        {
+            get;
+            set;
+        }
+    }
+}
