@@ -42,12 +42,13 @@ jobs:
         shell: bash
         run: |
           mkdir -p artifacts
+          pack_args="-c Release -o artifacts -p:GeneratePackageOnBuild=false"
           if [ -n "${{ steps.version.outputs.value }}" ]; then
-            dotnet pack ZuChromeDriver/ZuChromeDriver.csproj -c Release -o artifacts \
+            dotnet pack ZuChromeDriver/ZuChromeDriver.csproj $pack_args \
               -p:Version="${{ steps.version.outputs.value }}" \
               -p:PackageVersion="${{ steps.version.outputs.value }}"
           else
-            dotnet pack ZuChromeDriver/ZuChromeDriver.csproj -c Release -o artifacts
+            dotnet pack ZuChromeDriver/ZuChromeDriver.csproj $pack_args
           fi
 
       - name: Push to nuget.org
