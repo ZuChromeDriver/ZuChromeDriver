@@ -17,6 +17,10 @@ ZuChromeDriver.slnx
 └── ZuChromeDriver.Tests/        # NUnit E2E against Chrome + HtmlForTests
 ```
 
+## ZuChromeDriverMcp
+
+[ZuChromeDriverMcp](https://github.com/ZuChromeDriver/ZuChromeDriverMcp) — MCP server for Cursor and other AI agents to automate Chrome (navigate, snapshot, click, screenshots, tabs, network, console). Built on **ZuChromeDriver**; does not duplicate the CDP client.
+
 ## Requirements
 
 - .NET 10 SDK
